@@ -2,7 +2,7 @@
 
 ## Comment Installer FeelsBot ?
 Clonez le répertoire du projet "FeelsBot" à partir de Github et téléchargez le sur votre machine 
-```powershell
+```
 git clone https://github.com/Itoshuga/FeelsBot.git
 ```
 
