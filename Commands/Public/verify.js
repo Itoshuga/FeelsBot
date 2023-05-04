@@ -3,10 +3,10 @@ const { EmbedBuilder, ButtonStyle, ActionRowBuilder, ButtonBuilder, SlashCommand
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('verify')
-        .setDescription('Définit le salon de vérification.')
+        .setDescription('Send an embed verification which give a role')
         .addChannelOption(option => 
             option.setName('channel')
-            .setDescription('Envoit un embed de verification')
+            .setDescription('Defines the verification channel.')
             .setRequired(true)
         )
         .setDefaultMemberPermissions(PermissionFlagsBits.Administrator),
@@ -14,7 +14,7 @@ module.exports = {
             const channel = interaction.options.getChannel('channel');
             const verifyEmbed = new EmbedBuilder()
                 .setTitle("Vérification")
-                .setDescription("Cliquez sur le bouton ci-dessous pour accéder aux diffèrents salons.")
+                .setDescription("Click on the button below to access the different channels.")
                 .setColor(0xFFFFFF)
                 let sendChannel = channel.send({
                     embeds: [verifyEmbed],
@@ -22,15 +22,15 @@ module.exports = {
                         new ActionRowBuilder().setComponents(
                             new ButtonBuilder()
                                 .setCustomId('verify')
-                                .setLabel('Vérification')
+                                .setLabel('Verification')
                                 .setStyle(ButtonStyle.Success)
                         )
                     ]
                 });
                 if (!sendChannel) {
-                    return interaction.reply({content: "Il semble qu'il y a une erreur, Essaie plus tard.", ephemeral: true});
+                    return interaction.reply({content: "There seems to be an error, try again later.", ephemeral: true});
                 } else {
-                    return interaction.reply({content: "Le salon de vérification a bien été définit.", ephemeral: true});
+                    return interaction.reply({content: "The verification channel has been defined.", ephemeral: true});
                 }
         }
 }
